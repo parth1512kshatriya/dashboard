@@ -43,6 +43,18 @@
       z-index: 1000;
     }
 
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
     .hamburger {
       display: none;
       font-size: 1.7rem;
@@ -178,7 +190,40 @@
       display: inline-block;
     }
 
-    /* Responsive Styling */
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .charts {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .chart {
+      background: #fff;
+      padding: 2rem;
+      box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+    }
+
+    .chart h2 {
+      margin-bottom: 0.5rem;
+      font-size: 30px;
+      color: #333;
+      text-align: center;
+    }
+
     @media (max-width: 991px) {
       .dashboard {
         grid-template-columns: 1fr;
@@ -215,11 +260,103 @@
       .cards {
         grid-template-columns: 1fr;
       }
+      
+      .chart h2{
+      font-size:20px;
+      }
 
       .search {
         display: none;
       }
     }
+    
+    @media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .topbar-left, .topbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search {
+    width: 100%;
+    order: 3;
+    margin-top: 0.5rem;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .chart {
+    padding: 1rem;
+  }
+
+  .sidebar {
+    width: 220px;
+    left: -220px;
+    top: 0;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    font-size: 1.2rem;
+  }
+
+  .card i {
+    font-size: 1.5rem;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media (max-width: 360px) {
+  .chart h2 {
+    font-size: 18px;
+  }
+
+  .card h3 {
+    font-size: 0.85rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+  }
+
+  .card i {
+    font-size: 1.2rem;
+  }
+}
+
+    
   </style>
 </head>
 <body>
@@ -227,19 +364,25 @@
   <div class="dashboard">
     <!-- Topbar -->
     <div class="topbar">
-      <div class="logo">
-        <i class="ri-cloud-line"></i>
-        <span>Logo</span>
+      <div class="topbar-left">
+        <div class="logo">
+          <i class="ri-cloud-line"></i>
+          <span>Logo</span>
+        </div>
       </div>
+      
       <div class="search">
-        <i class="ri-search-line"></i>
-        <input type="text" placeholder="Search....">
+	<i class="ri-search-line"></i>
+	<input type="text" placeholder="Search here ... ">
       </div>
-      <div class="userprofile">
-        <i class="ri-account-circle-line"></i>
-      </div>
-      <div class="hamburger" onclick="toggleSidebar()">
-        <i class="ri-menu-line"></i>
+      
+      <div class="topbar-right">
+        <div class="userprofile">
+          <i class="ri-account-circle-line"></i>
+        </div>
+        <div class="hamburger" onclick="toggleSidebar()">
+          <i class="ri-menu-line"></i>
+        </div>
       </div>
     </div>
 
@@ -282,13 +425,21 @@
           <p>+15.2%</p>
         </div>
       </div>
-
-      <div class="table-container">
-        <!-- Future Tables -->
+      
+      <div class="charts">
+        <div class="chart">
+          <h2>Earnings (Past 12 months)</h2>
+          <canvas id="c1"></canvas>
+        </div>
+	
+        <div class="chart">
+          <h2>Employees</h2>
+          <canvas id="c2"></canvas>
+        </div>
       </div>
 
-      <div class="activity-feed">
-        <!-- Future Activity Feed -->
+      <div class="table-container">
+
       </div>
     </div>
   </div>
@@ -299,6 +450,10 @@
       sidebar.classList.toggle('active');
     }
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"></script>
+  <script src="chart1.js"></script>
+  <script src="chart2.js"></script>
 
 </body>
 </html>

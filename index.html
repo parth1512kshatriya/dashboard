@@ -434,11 +434,11 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
       <div class="sidebar-top">
-        <a href="#" class="active"><i class="ri-dashboard-line"></i>Dashboard</a>
-        <a href="#"><i class="ri-team-line"></i>Customer</a>
+        <a href="#main-content" class="active"><i class="ri-dashboard-line"></i>Dashboard</a>
+        <a href="#customer"><i class="ri-team-line"></i>Customer</a>
         <a href="#"><i class="ri-calendar-line"></i>Meetings</a>
         <a href="#"><i class="ri-mail-line"></i>Messages</a>
-        <a href="#"><i class="ri-pie-chart-line"></i>Analytics</a>
+        <a href="#analytics"><i class="ri-pie-chart-line"></i>Analytics</a>
       </div>
       <div class="sidebar-bottom">
         <a href="#"><i class="ri-question-line"></i>Help</a>
@@ -447,7 +447,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="main-content">
+    <div class="main-content" id="main-content">
       <div class="cards">
         <div class="card">
           <i class="ri-user-line"></i>
@@ -471,7 +471,7 @@
         </div>
       </div>
       
-      <div class="charts">
+      <div class="charts" id="analytics">
         <div class="chart">
           <h2>Earnings (Past 12 months)</h2>
           <canvas id="c1"></canvas>
@@ -483,7 +483,7 @@
         </div>
       </div>
 
-      <div class="table-container">
+      <div class="table-container" id="customer">
 	<table>
 		<thead>
 			<tr>
